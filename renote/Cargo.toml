@@ -9,3 +9,4 @@ description = "Rewrite of snotes"
 workspace = true
 
 [dependencies]
+clap = { version = "4.6.0", features = ["derive"] }
