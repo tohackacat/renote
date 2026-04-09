@@ -59,6 +59,14 @@ deny:
 # All checks, audit and deny
 ci: check audit deny
 
+# Nix build
+nix-build:
+    nix build
+
+# Nix checks
+nix-check:
+    nix flake check
+
 # Generate changelog
 changelog:
     git cliff -o CHANGELOG.md
