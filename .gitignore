@@ -1,0 +1,25 @@
+# Build artifacts
+/target
+/result
+
+# Secrets
+.env
+.env.local
+.env.production
+
+# Nix / direnv
+.direnv/
+.nix-profile
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+
+# Rust
+**/*.rs.bk
