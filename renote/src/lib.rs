@@ -30,3 +30,21 @@ impl Config {
         Ok(())
     }
 }
+
+pub struct Note {
+    id: std::path::PathBuf,
+    pub content: String,
+}
+
+impl Note {
+    pub fn new(id: std::path::PathBuf, content: String) -> Self {
+        Self { id, content }
+    }
+    pub fn title(&self) -> &str {
+        self.id
+            .file_prefix()
+            .unwrap_or_default()
+            .to_str()
+            .unwrap_or_default()
+    }
+}
