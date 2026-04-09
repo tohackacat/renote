@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Fallback commit-msg hook for when cocogitto is not available.
+# Validates Conventional Commits format: type(scope): description
+
+commit_msg=$(head -1 "$1")
+
+# Allow merge commits
+if echo "$commit_msg" | grep -qE "^Merge "; then
+    exit 0
+fi
+
+# Allow reverts
+if echo "$commit_msg" | grep -qE "^Revert "; then
+    exit 0
+fi
+
+# Validate format
+if ! echo "$commit_msg" | grep -qE "^(feat|fix|refactor|docs|test|ci|chore|security|perf|revert)(\(.+\))?!?: .{1,72}$"; then
+    echo "ERROR: Commit message does not follow Conventional Commits format."
+    echo ""
+    echo "Expected: type(scope): description"
+    echo "  type:  feat | fix | refactor | docs | test | ci | chore | security | perf | revert"
+    echo "  scope: optional"
+    echo "  max:   72 characters for first line"
+    echo ""
+    echo "Got: $commit_msg"
+    exit 1
+fi

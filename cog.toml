@@ -1,0 +1,17 @@
+[changelog]
+path = "CHANGELOG.md"
+
+[commit_types]
+feat = { changelog_title = "Features" }
+fix = { changelog_title = "Bug Fixes" }
+refactor = { changelog_title = "Refactoring" }
+docs = { changelog_title = "Documentation" }
+test = { changelog_title = "Tests" }
+ci = { changelog_title = "CI/CD", omit_from_changelog = true }
+chore = { changelog_title = "Chores", omit_from_changelog = true }
+security = { changelog_title = "Security" }
+perf = { changelog_title = "Performance" }
+revert = { changelog_title = "Reverts" }
+
+[git_hooks.commit-msg]
+path = "scripts/commit-msg"
